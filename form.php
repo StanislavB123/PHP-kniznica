@@ -16,6 +16,26 @@
     $sql = "SELECT ID, Name, Isbn, Price, Category_id, Author FROM book";
 $result = $conn->query($sql);
 
+/*
+$sql = "SELECT ID, Name FROM categery";
+$result = $conn->query($sql);
+
+
+    $book = [];
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $book [] = $row;
+  }
+  echo $book[0]['Category_id'];
+} 
+$conn->close();
+*/
+
+$sql = "SELECT ID, Name, Isbn, Price, Category_id, Author FROM book";
+$result = $conn->query($sql);
+
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
@@ -25,4 +45,5 @@ if ($result->num_rows > 0) {
   echo "0 results";
 }
 $conn->close();
+
 ?>

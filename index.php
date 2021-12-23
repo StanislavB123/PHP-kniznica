@@ -1,6 +1,3 @@
-<?php
-    include 'form.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,16 +12,16 @@
     <div class="container">
         <h1>Kniznica</h1>
     
-        <form class="form-horizontal">
+        <form action="insert.php" method="post" class="form-horizontal">
             <div class="form-group">
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="nazov" placeholder="Nazov knihy">
+                    <input type="text" class="form-control" id="nazov" name="name" placeholder="Nazov knihy">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-3">
-                    <input type="text" class="form-control" placeholder="ISBN">
+                    <input type="text" class="form-control" name="Isbn" placeholder="ISBN">
                 </div>
                 <div class="col-xs-3">
                     <input type="text" class="form-control" placeholder="Cena">
@@ -47,10 +44,13 @@
             
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-10">
-                    <button type="submit" class="btn btn-default">Pridaj do kniznice</button>
+                    <button type="submit" name="submit" value= "Submit" class="btn btn-default">Pridaj do kniznice</button>
                 </div>
             </div>
         </form>
+        <?php
+            include 'form.php';
+        ?>
     </div>
 </body>
 </html>
