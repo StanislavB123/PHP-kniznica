@@ -1,0 +1,26 @@
+h1 {
+    text-align: center;
+    color: gray;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 4em;
+}
+
+.form-group button {
+background-color: rgb(190, 190, 190);
+}
+
+form{
+    padding-top: 1em;
+}
+
+.connectionbad{
+    color:rgb(247, 210, 210)
+}
+
+.connectionOK{
+    color: rgb(219, 250, 232);
+}
+
+.answer{
+    color: black;
+}

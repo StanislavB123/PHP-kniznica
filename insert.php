@@ -56,22 +56,34 @@
       */
 
 
-      $con = mysqli_connect('db', 'db', 'db', 'db');
+      $con = new mysqli('db', 'db', 'db', 'db');
 
-      if(!$con)
-      {
-          echo 'Not connected to server';
-      }
-      else{
+
+
+        $query = mysqli_query($con, "SELECT * FROM [category]");
+
 
       
-        $result = mysqli_query($con, "INSERT INTO book (Name, Isbn, Price, Category_id, Author) VALUES ('name', 'Isbn')");
-        
-        var_dump($result);
+        $query = "INSERT INTO book (Name, Isbn, Price, Category_id, Author) VALUES (?, ?, ?, ?, ?)";
 
-  //    $Name = $_POST['name'];
-//      $Isbn = $_POST['Isbn'];
-    }
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("ssss", $Name, $Isbn, $Price, $Category_id, $Author);
+
+        $Name = $_POST['name'];
+        $Isbn = $_POST['Isbn'];
+        $Price = $_POST['cena'];
+        $Category_id = $_POST['category'];
+        $Author = $_POST['author'];
+
+        $stmt->execute();
+        
+       
+
+        
+     
+
+    
+    
       /*
       $sql = "INSERT INTO book (name, Isbn) VALUES ('$Name', $Isbn)";
 
@@ -84,7 +96,7 @@
           echo 'Insert';
       }
 */
-      //header("refresh:2; url=index.php")
+      header("refresh:2; url=index.php")
       
 
 

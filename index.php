@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <title>Kniznica</title>
 </head>
 <body>
@@ -24,7 +24,7 @@
                     <input type="text" class="form-control" name="Isbn" placeholder="ISBN">
                 </div>
                 <div class="col-xs-3">
-                    <input type="text" class="form-control" placeholder="Cena">
+                    <input type="text" class="form-control" name="cena" placeholder="Cena">
                 </div>
             </div><br>
 
@@ -38,7 +38,7 @@
                         </select>
                     </div>
                 <div class="col-xs-3">
-                    <input type="text" class="form-control" placeholder="Autor">
+                    <input type="text" class="form-control" name="author" placeholder="Autor">
                 </div>
             </div><br>
             
@@ -47,6 +47,7 @@
                     <button type="submit" name="submit" value= "Submit" class="btn btn-default">Pridaj do kniznice</button>
                 </div>
             </div>
+            <hr>
         </form>
         <?php
             include 'form.php';
