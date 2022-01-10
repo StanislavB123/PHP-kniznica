@@ -1,3 +1,9 @@
+<?php
+include_once 'database.php';
+    $select = "SELECT Name FROM category";
+    $result = mysqli_query ($connection, $select);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,12 +36,12 @@
 
             <div class="row">
                 <div class="col-xs-3">
-                        <select class="form-control" name="category" id="category">
-                            <option value="roman">Roman</option>
-                            <option value="triller">Triller</option>
-                            <option value="fantasy">Fantasy</option>
-                            <option value="rozpravka">Rozpravka</option>
-                        </select>
+                    <select class="form-control" name="category">
+                        <option>Please select category</option>
+                        <?php foreach($result as $key => $value){ ?>
+                            <option value="<?= $value['Name'];?>"><?= $value['Name']; ?></option> 
+                        <?php } ?>
+                    </select>
                     </div>
                 <div class="col-xs-3">
                     <input type="text" class="form-control" name="author" placeholder="Autor">
