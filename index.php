@@ -1,6 +1,6 @@
 <?php
 include_once 'database.php';
-    $select = "SELECT Name FROM category";
+    $select = "SELECT Name, ID FROM category";
     $result = mysqli_query ($connection, $select);
 ?>
 
@@ -37,9 +37,8 @@ include_once 'database.php';
             <div class="row">
                 <div class="col-xs-3">
                     <select class="form-control" name="category">
-                        <option>Please select category</option>
                         <?php foreach($result as $key => $value){ ?>
-                            <option value="<?= $value['Name'];?>"><?= $value['Name']; ?></option> 
+                            <option value="<?= $value['ID'];?>"><?= $value['Name']; ?></option> 
                         <?php } ?>
                     </select>
                     </div>

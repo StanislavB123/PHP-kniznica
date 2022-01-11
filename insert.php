@@ -63,16 +63,19 @@
         //$result = mysqli_query($con, "SELECT");
 
 
-      
-        $query = "INSERT INTO book (Name, Isbn, Price, Author) VALUES (?, ?, ?, ?)";
-
-        $stmt = $con->prepare($query);
-        $stmt->bind_param("ssss", $Name, $Isbn, $Price, $Author);
-
         $Name = $_POST['name'];
         $Isbn = $_POST['Isbn'];
         $Price = $_POST['cena'];
         $Author = $_POST['author'];
+        $CategoryID = $_POST['category'];
+
+
+        $query = "INSERT INTO book (Name, Isbn, Price, Author, Category_id) VALUES (?, ?, ?, ?, ?)";
+
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("ssssi", $Name, $Isbn, $Price, $Author, $Category);
+
+
         
         $stmt->execute();
         
@@ -91,7 +94,7 @@
           echo 'Insert';
       }
 */
-      //header("refresh:2; url=index.php")
+      header("refresh:2; url=index.php")
       
 
 
