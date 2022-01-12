@@ -21,7 +21,7 @@ include_once 'database.php';
         <form action="insert.php" method="post" class="form-horizontal">
             <div class="form-group">
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="nazov" name="name" placeholder="Nazov knihy">
+                    <input type="text" class="form-control" id="nazov" name="name" placeholder="Nazov knihy" required oninvalid="this.setCustomValidity('Please add a book title')">
                 </div>
             </div>
 
@@ -37,6 +37,7 @@ include_once 'database.php';
             <div class="row">
                 <div class="col-xs-3">
                     <select class="form-control" name="category">
+                    <option>Please select category</option>
                         <?php foreach($result as $key => $value){ ?>
                             <option value="<?= $value['ID'];?>"><?= $value['Name']; ?></option> 
                         <?php } ?>
@@ -52,11 +53,12 @@ include_once 'database.php';
                     <button type="submit" name="submit" value= "Submit" class="btn btn-default">Pridaj do kniznice</button>
                 </div>
             </div>
-            <hr>
         </form>
+        <hr>
         <?php
             include 'form.php';
         ?>
     </div>
+    
 </body>
 </html>

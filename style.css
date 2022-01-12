@@ -11,6 +11,7 @@ background-color: rgb(190, 190, 190);
 
 form{
     padding-top: 3em;
+    padding-left: 27em;
 }
 
 .connectionbad{
@@ -23,4 +24,11 @@ form{
 
 .answer{
     color: black;
+    margin-top: -17em;
+}
+
+.added{
+    color: rgb(33, 211, 107);
+    font-size: 3em;
+    text-align: center;
 }

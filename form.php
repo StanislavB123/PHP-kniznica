@@ -26,53 +26,34 @@
       $sql = "SELECT ID, Name, Isbn, Price, Category_id, Author FROM book";
   $result = $conn->query($sql);
 
-  /*
-  $sql = "SELECT ID, Name FROM categery";
-  $result = $conn->query($sql);
-
-
-      $book = [];
-
-  if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-      $book [] = $row;
-    }
-    echo $book[0]['Category_id'];
-  } 
-  $conn->close();
-  */
-  
-  /*
-  SELECT book.*, category.Name AS category
-  FROM category
-  LEFT JOIN book ON book.Category_id = book.Category_id;
-  */
   $sql = "SELECT book.*, category.Name AS category 
   FROM book LEFT JOIN category ON book.Category_id = category.ID;";
   $result = $conn->query($sql);
 
-  var_dump($result->fetch_assoc());
-
+  $html = '';
   if ($result->num_rows > 0) {
-    echo "<table class='table answer'>";
-      echo "<tr>";
-      echo '<th>' . 'Meno' . '</th>' . '<th>' . 'Isbn' . '</th>' . '<th>' . 'Cena' . '</th>' . '<th>' . 'Category' . '</th>' . '<th>' . 'Autor' . '</th>';
-      echo "</tr>";
-    echo "</table>";
+    $html .="<table class='table table-striped answer'>";
+    $html .= "<tr>";
+    $html .= '<th>' . 'Meno' . '</th>' . '<th>' . 'Isbn' . '</th>' . '<th>' . 'Cena' . '</th>' . '<th>' . 'Category' . '</th>' . '<th>' . 'Autor' . '</th>';
+    $html .= "</tr>";
+
     // output data of each row
     while($row = $result->fetch_assoc()) {
-
-      echo "<table class='table table-striped answer'>";
-        echo "<tr>";
-        //echo $row["ID"]. " " . $row["Name"].  " " . $row["Isbn"]. " " . $row["Price"]. " " . $row["Category_id"]. " " . $row["Author"]. "<br>";
-          echo '<td>' . $row["Name"] . '</td>' . '<td>' . $row["Isbn"]. '</td>' . '<td>' . $row["Price"]. '</td>' . '<td>' . $row["category"] . '</td>' . '<td>'. $row["Author"] . '</td>' . "<br>";
-        echo "</tr>";
-      echo "</table>";
+      $html .= "<tr>";
+      $html .= 
+        '<td>' . $row["Name"] . '</td>' . 
+        '<td>' . $row["Isbn"]. '</td>' . 
+        '<td>' . $row["Price"]. '</td>' . 
+        '<td>' . $row["category"] . '</td>' . 
+        '<td>' . $row["Author"] . '</td>' . "<br>";
+      $html .= "</tr>";
+            
     }
+    $html .= "</table>";
   } else {
     echo "0 results";
   }
+  echo $html;
   $conn->close();
   ?>
 
