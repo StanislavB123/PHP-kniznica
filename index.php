@@ -12,25 +12,35 @@ include_once 'database.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script defer src="index.js"></script>
     <title>Kniznica</title>
 </head>
 <body>
     <div class="container">
         <h1>Kniznica</h1>
     
-        <form action="insert.php" method="post" class="form-horizontal">
+        <form action="insert.php" method="post" class="form-horizontal" id="form">
             <div class="form-group">
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="nazov" name="name" placeholder="Nazov knihy" required oninvalid="this.setCustomValidity('Please add a book title')">
+                <div class="input-control">
+                    <input type="text" class="form-control" id="nazov" name="name" placeholder="Nazov knihy">
+                    <div class="error"></div>
+                </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-3">
-                    <input type="text" class="form-control" name="Isbn" placeholder="ISBN">
+                <div class="input-control">
+                    <input id="ISBN" type="text" class="form-control" name="Isbn" placeholder="ISBN">
+                    <div class="error"></div>
+                </div>
                 </div>
                 <div class="col-xs-3">
-                    <input type="text" class="form-control" name="cena" placeholder="Cena">
+                <div class="input-control">
+                    <input id="cena" type="text" class="form-control" name="cena" placeholder="Cena">
+                    <div class="error"></div>
+                </div>
                 </div>
             </div><br>
 
@@ -44,7 +54,10 @@ include_once 'database.php';
                     </select>
                     </div>
                 <div class="col-xs-3">
-                    <input type="text" class="form-control" name="author" placeholder="Autor">
+                <div class="input-control">
+                    <input id="autor"type="text" class="form-control" name="author" placeholder="Autor">
+                    <div class="error"></div>
+                </div>
                 </div>
             </div><br>
             
