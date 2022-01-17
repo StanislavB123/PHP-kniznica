@@ -28,11 +28,19 @@ const setSuccess = element => {
     inputControl.classList.remove('error');
 };
 
+const isValidISBN = ISBN => {
+    const re = /^[0-9]+$/;
+    return re.test(String(ISBN).toLowerCase());
+}
+
 const validateInputs = () => {
-    const nazovValue = nazov.value.trim();
-    const ISBNValue = ISBN.value.trim();
-    const cenaValue = cena.value.trim();
+    const nazovValue = nazov.value;
+    const ISBNValue = ISBN.value;
+    const cenaValue = cena.value;
     const autorValue = autor.value.trim();
+    console.log(ISBNValue);
+    console.log(ISBNValue.length);
+    console.log(ISBN);
 
     if(nazovValue === '') {
         setError(nazov, 'Nazov is required');
@@ -43,9 +51,14 @@ const validateInputs = () => {
     if(ISBNValue === '') {
         setError(ISBN, 'ISBN is required');
     } 
-    else if(ISBNValue.lenght<3){
-        setError(ISBN, 'lenght must be min 6');
-        return false;
+    else if (!isValidISBN(ISBNValue)) {
+        setError(ISBN, 'Provide a valid ISBN');
+    }
+    else if(ISBNValue.length<9){
+        setError(ISBN, 'Length must be min 9');
+    }
+    else if(ISBNValue.length>12){
+        setError(ISBN, 'Length must be max 12');
     }
     else {
         setSuccess(ISBN);
@@ -61,7 +74,7 @@ const validateInputs = () => {
         setError(autor, 'Autor is required');
     } else {
         setSuccess(autor);
-    }
+    }    
 };
 
 
