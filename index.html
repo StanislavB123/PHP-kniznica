@@ -1,9 +1,3 @@
-<?php
-include_once 'database.php';
-    $select = "SELECT Name, ID FROM category";
-    $result = mysqli_query ($connection, $select);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,26 +8,12 @@ include_once 'database.php';
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script defer src="index.js"></script>
-    <title>Kniznica</title>
+    <title>Vue library</title>
 </head>
 <body>
-
     <div class="container">
-    <div id="app">
-        <h1>Kniznica Pocet knih v kniznici: {{ library.length }}</h1>
-        <table class="table">
-            <tr v-for="book in library">
-                <td>{{book.name}}</td>
-                <td>{{book.isbn}}</td>
-                <td>{{book.price}}</td>
-                <td>{{book.category}}</td>
-                <td>{{book.author}}</td>
-            </tr>
-        </table>
-    </div>
+            <h1>Vue Kniznica</h1>
 
-        <h1>Kniznica {{ message }}</h1>
-    
         <form action="insert.php" method="post" class="form-horizontal" id="form">
             <div class="form-group">
                 <div class="col-sm-6">
@@ -63,9 +43,7 @@ include_once 'database.php';
                 <div class="col-xs-3">
                     <select class="form-control" name="category">
                     <option>Please select category</option>
-                        <?php foreach($result as $key => $value){ ?>
-                            <option value="<?= $value['ID'];?>"><?= $value['Name']; ?></option> 
-                        <?php } ?>
+    
                     </select>
                     </div>
                 <div class="col-xs-3">
@@ -83,10 +61,20 @@ include_once 'database.php';
             </div>
         </form>
         <hr>
-        <?php
-            include 'form.php';
-        ?>
+        <div id="app">
+            <h2>Pocet knih v kniznici: {{ library.length }}</h2>
+            <p>{{message}}</p>
+        
+            <table class="table">
+                <tr v-for="book in library">
+                    <td>{{book.name}}</td>
+                    <td>{{book.isbn}}</td>
+                    <td>{{book.price}}</td>
+                    <td>{{book.category}}</td>
+                    <td>{{book.author}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
-    
 </body>
 </html>

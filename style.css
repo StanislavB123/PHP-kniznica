@@ -65,3 +65,9 @@ form{
     font-size: 15px;
     height: 13px;
 }
+
+h2{
+    text-align: center;
+    color: brown;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

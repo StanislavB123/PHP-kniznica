@@ -1,3 +1,26 @@
+var app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!',
+      library: []
+    },
+    methods : {
+        removeElement : function(index){
+            this.library.$remove(index);
+        }
+      },
+    async created (){
+        const response = await fetch("test.php");
+        this.library = await response.json();
+    }
+  })
+
+
+
+
+
+
+
 const form = document.getElementById('form');
 const nazov = document.getElementById('nazov');
 const ISBN = document.getElementById('ISBN');
