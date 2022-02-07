@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="index.js"></script>
     <title>Vue library</title>
 </head>
@@ -14,64 +15,82 @@
     <div class="container">
             <h1>Vue Kniznica</h1>
 
-        <form action="insert.php" method="post" class="form-horizontal" id="form">
-            <div class="form-group">
-                <div class="col-sm-6">
-                <div class="input-control">
-                    <input type="text" class="form-control" id="nazov" name="name" placeholder="Nazov knihy">
-                    <div class="error"></div>
-                </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-3">
-                <div class="input-control">
-                    <input id="ISBN" type="text" class="form-control" name="Isbn" placeholder="ISBN">
-                    <div class="error"></div>
-                </div>
-                </div>
-                <div class="col-xs-3">
-                <div class="input-control">
-                    <input id="cena" type="text" class="form-control" name="cena" placeholder="Cena">
-                    <div class="error"></div>
-                </div>
-                </div>
-            </div><br>
-
-            <div class="row">
-                <div class="col-xs-3">
-                    <select class="form-control" name="category">
-                    <option>Please select category</option>
-    
-                    </select>
-                    </div>
-                <div class="col-xs-3">
-                <div class="input-control">
-                    <input id="autor"type="text" class="form-control" name="author" placeholder="Autor">
-                    <div class="error"></div>
-                </div>
-                </div>
-            </div><br>
-            
-            <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-10">
-                    <button type="submit" name="submit" value= "Submit" class="btn btn-default">Pridaj do kniznice</button>
-                </div>
-            </div>
-        </form>
-        <hr>
         <div id="app">
+
+            <form action="insert.php" method="post" class="form-horizontal" id="form">
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <div class="input-control">
+                            <input type="text" class="form-control" id="nazov" name="name" placeholder="Nazov knihy">
+                            <div class="error"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="input-control">
+                            <input id="ISBN" type="text" class="form-control" name="Isbn" placeholder="ISBN">
+                            <div class="error"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="input-control">
+                            <input id="cena" type="text" class="form-control" name="cena" placeholder="Cena">
+                            <div class="error"></div>
+                        </div>
+                    </div>
+                </div><br>
+
+                <div class="row">
+                    <div class="col-xs-3">
+                        <select class="form-control" name="category">
+                            <option>Please select category</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="input-control">
+                            <input id="autor"type="text" class="form-control" name="author" placeholder="Autor">
+                            <div class="error"></div>
+                        </div>
+                    </div>
+                </div><br>
+                
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-10">
+                        <button type="submit" name="submit" value= "Submit" class="btn btn-default" @click='addRecord();'>Pridaj do kniznice</button>
+                    </div>
+                </div>
+            </form>
+            <hr>
+            <span>Multiline message is:</span>
+            <p style="white-space: pre-line;">{{ message }}</p>
+            <br>
+            <textarea v-model="message" placeholder="sak napis sem volaco ne? "></textarea>
             <h2>Pocet knih v kniznici: {{ library.length }}</h2>
             <p>{{message}}</p>
-        
-            <table class="table">
+
+            <div v-for="message in messages">
+                <div class="alert" :class="`alert-${message.severity}`">{{message.message}}</div>
+            </div>
+            
+            <table class="table table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nazov</th>
+                        <th>ISBN</th>
+                        <th>Cena</th>
+                        <th>Kategoria</th>
+                        <th>Autor</th>
+                    </tr>
+                </thead>
                 <tr v-for="book in library">
-                    <td>{{book.name}}</td>
-                    <td>{{book.isbn}}</td>
-                    <td>{{book.price}}</td>
+                    <td>{{book.Name}}</td>
+                    <td>{{book.Isbn}}</td>
+                    <td>{{book.Price}}</td>
                     <td>{{book.category}}</td>
-                    <td>{{book.author}}</td>
+                    <td>{{book.Author}}</td>
+                    <td> <input class='delete' type='button' name='delete' value='X' @click='deleteClick(book.ID)'></td>
                 </tr>
             </table>
         </div>

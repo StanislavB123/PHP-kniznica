@@ -71,3 +71,14 @@ h2{
     color: brown;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.delete{
+    background-color: red;
+    color: white;
+    border-radius: 20%;
+}
+
+.update{
+    background-color: rgb(248, 217, 83);
+    border-radius: 10%;
+}
